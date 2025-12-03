@@ -10,15 +10,13 @@ function getComputerChoice (max){
     }
     return result
 }
-    console.log ("Computer: " + getComputerChoice(3));
- //generates a number between 0-2, depending on the number outputs rock/paper/scissors
+ //generates a number between 0-2, depending on the number output rock/paper/scissors
 
 function getHumanChoice () {
     let answer = prompt("Lets play rock, paper, scissors! What do you choose?");
     answer = answer.toLowerCase();
     return answer
-}
-    console.log ("You: " + getHumanChoice());
+}   
 //prompts user to enter rock/paper/scissor, outputs user answer
 
 let humanScore = 0;
@@ -32,28 +30,32 @@ function playRound (humanChoice, computerChoice) {
     } else if (humanChoice === "scissors" && computerChoice === "scissors"){
         return console.log ("Its a tie. No one wins this time!")
     } else if (humanChoice === "rock" && computerChoice === "scissors"){
-        humanScore = humanScore++;
+        humanScore = humanScore + 1;
         return console.log ("You win! Rock beats Scissors.");
     } else if (humanChoice === "scissors" && computerChoice === "paper"){
-        humanScore = humanScore++;
+        humanScore = humanScore + 1;
         return console.log ("You win! Scissors beats Paper.");
     } else if (humanChoice === "paper" && computerChoice === "rock"){
-        humanScore = humanScore++;
+        humanScore = humanScore + 1;
         return console.log ("You win! Paper beats Rock.");
-    } else if (humanChoice === "scissor" && computerChoice === "rock"){
-        computerScore = computerScore++;
+    } else if (humanChoice === "scissors" && computerChoice === "rock"){
+        computerScore = computerScore + 1;
         return console.log ("You Lose! Rock beats Scissors.");
     } else if (humanChoice === "paper" && computerChoice === "scissors"){
-        computerScore = computerScore++;
+        computerScore = computerScore + 1;
         return console.log ("You Lose! Scissors beats Paper.");
     } else if (humanChoice === "rock" && computerChoice === "paper"){
-        computerScore = computerScore++;
+        computerScore = computerScore + 1;
         return console.log ("You Lose! Paper beats Rock.");
     }
 }
-//logic statement 
+//logic function to determine winner
 
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
 playRound(humanSelection, computerSelection);
+//outputs any of the console msgs in function playRound depending on who wins
+
+console.log ("Computer: " + computerSelection + "  You: " + humanSelection);
+console.log ("Human Score: " + humanScore + "  Computer Score: " + computerScore);
