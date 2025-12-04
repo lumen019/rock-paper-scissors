@@ -1,6 +1,6 @@
 function getComputerChoice (){
     let number = Math.floor(Math.random() * 3); //randomly picks a whole number between 0-2  
-    console.log(number);
+    console.log("---------------------------------------------------");
     let result;
     if (number === 0 ){ //if statement sets number to rock/paper/scissors
         result = "rock"
@@ -34,22 +34,22 @@ function playRound (humanChoice, computerChoice) {
         return console.log ("Its a tie. No one wins this time!")
     } else if (humanChoice === "rock" && computerChoice === "scissors"){
         humanScore = humanScore + 1;
-        return console.log ("You win! Rock beats Scissors.");
+        return console.log ("Rock beats Scissors. You won this round! 🎉");
     } else if (humanChoice === "scissors" && computerChoice === "paper"){
         humanScore = humanScore + 1;
-        return console.log ("You win! Scissors beats Paper.");
+        return console.log ("Scissors beats Paper. You won this round! 🎉");
     } else if (humanChoice === "paper" && computerChoice === "rock"){
         humanScore = humanScore + 1;
-        return console.log ("You win! Paper beats Rock.");
+        return console.log ("Paper beats Rock. You won this round! 🎉");
     } else if (humanChoice === "scissors" && computerChoice === "rock"){
         computerScore = computerScore + 1;
-        return console.log ("You Lose! Rock beats Scissors.");
+        return console.log ("Rock beats Scissors. Sorry the computer wins 😞.");
     } else if (humanChoice === "paper" && computerChoice === "scissors"){
         computerScore = computerScore + 1;
-        return console.log ("You Lose! Scissors beats Paper.");
+        return console.log ("Scissors beats Paper. Sorry the computer wins 😞.");
     } else if (humanChoice === "rock" && computerChoice === "paper"){
         computerScore = computerScore + 1;
-        return console.log ("You Lose! Paper beats Rock.");
+        return console.log ("Paper beats Rock. Sorry the computer wins 😞.");
     }
 }
 //comparison function to determine winner and increases score counter
@@ -59,15 +59,19 @@ function playGame (){
     for (let i=1; i<=5; i++){
         let computerSelection = getComputerChoice();
         let humanSelection = getHumanChoice();
+        console.log(`You: ${humanSelection}  Computer: ${computerSelection}`)
         playRound(humanSelection, computerSelection);  
     } 
     let winner;
     if (humanScore > computerScore){
-        winner = "You Win!"
+        console.log("---------------------------------------------------")
+        winner = "WINNER WINNER CHICKEN DINNER 🐤🐓🐔 You Win!!!!!!"
     } else if (humanScore < computerScore) {
-        winner = "The Computer Wins!"
+        console.log("---------------------------------------------------")
+        winner = "The Computer Wins! Better luck next time. (╥﹏╥)"
     } else {
-        winner = "Its a tie!"
+        console.log("---------------------------------------------------")
+        winner = "Its a tie! No one wins this time ☹"
     }
     return winner
 }
