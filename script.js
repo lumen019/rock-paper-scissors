@@ -24,8 +24,6 @@ function getHumanChoice () {
 
 let humanScore = 0;
 let computerScore = 0;
-let humanSelection = getHumanChoice();
-let computerSelection = getComputerChoice();
 
 function playRound (humanChoice, computerChoice) {
     if (humanChoice === "paper" && computerChoice === "paper"){
@@ -54,20 +52,20 @@ function playRound (humanChoice, computerChoice) {
         return console.log ("You Lose! Paper beats Rock.");
     }
 }
-//comparison function to determine winner
+//comparison function to determine winner and increases score counter
 
 
 function playGame (){
     for (let i=1; i<=5; i++){
-        computerSelection = getComputerChoice();
-        humanSelection = getHumanChoice();
+        let computerSelection = getComputerChoice();
+        let humanSelection = getHumanChoice();
         playRound(humanSelection, computerSelection);  
     } 
     let winner;
     if (humanScore > computerScore){
-        winner = "Human"
-    } else if (humanScore > computerScore) {
-        winner = "Computer"
+        winner = "You Win!"
+    } else if (humanScore < computerScore) {
+        winner = "The Computer Wins!"
     } else {
         winner = "Its a tie!"
     }
@@ -75,8 +73,3 @@ function playGame (){
 }
 
 console.log(playGame());
-
-
-
-//return (console.log ("Computer: " + computerSelection + "  You: " + humanSelection)+ 
-//console.log ("Human Score: " + humanScore + "  Computer Score: " + computerScore));
