@@ -1,5 +1,6 @@
-function getComputerChoice (max){
-    let number = Math.floor(Math.random() * max); //generates a number between 0-2
+function getComputerChoice (){
+    let number = Math.floor(Math.random() * 3); //randomly picks a whole number between 0-2  
+    console.log(number);
     let result;
     if (number === 0 ){ //if statement sets number to rock/paper/scissors
         result = "rock"
@@ -11,16 +12,20 @@ function getComputerChoice (max){
     return result
 }
  //generates a number between 0-2, depending on the number output rock/paper/scissors
+ 
 
 function getHumanChoice () {
     let answer = prompt("Lets play rock, paper, scissors! What do you choose?");
     answer = answer.toLowerCase();
     return answer
 }   
-//prompts user to enter rock/paper/scissor, outputs user answer
+//prompts user to enter rock/paper/scissor, output user answer
+
 
 let humanScore = 0;
 let computerScore = 0;
+let humanSelection = getHumanChoice();
+let computerSelection = getComputerChoice();
 
 function playRound (humanChoice, computerChoice) {
     if (humanChoice === "paper" && computerChoice === "paper"){
@@ -49,13 +54,29 @@ function playRound (humanChoice, computerChoice) {
         return console.log ("You Lose! Paper beats Rock.");
     }
 }
-//logic function to determine winner
+//comparison function to determine winner
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
-//outputs any of the console msgs in function playRound depending on who wins
+function playGame (){
+    for (let i=1; i<=5; i++){
+        computerSelection = getComputerChoice();
+        humanSelection = getHumanChoice();
+        playRound(humanSelection, computerSelection);  
+    } 
+    let winner;
+    if (humanScore > computerScore){
+        winner = "Human"
+    } else if (humanScore > computerScore) {
+        winner = "Computer"
+    } else {
+        winner = "Its a tie!"
+    }
+    return winner
+}
 
-console.log ("Computer: " + computerSelection + "  You: " + humanSelection);
-console.log ("Human Score: " + humanScore + "  Computer Score: " + computerScore);
+console.log(playGame());
+
+
+
+//return (console.log ("Computer: " + computerSelection + "  You: " + humanSelection)+ 
+//console.log ("Human Score: " + humanScore + "  Computer Score: " + computerScore));
