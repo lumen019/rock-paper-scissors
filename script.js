@@ -56,14 +56,14 @@ function playRound (humanChoice, computerChoice) {
 
 
 function playGame (){
-    for (let i=1; i<=5; i++){
+    for (let i=1; i<=5; i++){ //for loop to run the game 5 times
         let computerSelection = getComputerChoice();
         let humanSelection = getHumanChoice();
         console.log(`You: ${humanSelection}  Computer: ${computerSelection}`)
-        playRound(humanSelection, computerSelection);  
+        playRound(humanSelection, computerSelection); //the function is only called here so it only runs 5 times.
     } 
     let winner;
-    if (humanScore > computerScore){
+    if (humanScore > computerScore){  //compares scores to output a msg for the winner
         console.log("---------------------------------------------------")
         winner = "WINNER WINNER CHICKEN DINNER 🐤🐓🐔 You Win!!!!!!"
     } else if (humanScore < computerScore) {
