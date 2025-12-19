@@ -27,32 +27,57 @@ let computerScore = 0;
 
 function playRound (humanChoice, computerChoice) {
     if (humanChoice === "paper" && computerChoice === "paper"){
-        return console.log ("Its a tie. No one wins this time!")
+        return alert ("Its a tie. No one wins this time!")
     } else if (humanChoice === "rock" && computerChoice === "rock"){
-        return console.log ("Its a tie. No one wins this time!")
+        return alert ("Its a tie. No one wins this time!")
     } else if (humanChoice === "scissors" && computerChoice === "scissors"){
-        return console.log ("Its a tie. No one wins this time!")
+        return alert ("Its a tie. No one wins this time!")
     } else if (humanChoice === "rock" && computerChoice === "scissors"){
         humanScore = humanScore + 1;
-        return console.log ("Rock beats Scissors. You won this round! 🎉");
+        return alert ("Rock beats Scissors. You won this round! 🎉");
     } else if (humanChoice === "scissors" && computerChoice === "paper"){
         humanScore = humanScore + 1;
-        return console.log ("Scissors beats Paper. You won this round! 🎉");
+        return alert ("Scissors beats Paper. You won this round! 🎉");
     } else if (humanChoice === "paper" && computerChoice === "rock"){
         humanScore = humanScore + 1;
-        return console.log ("Paper beats Rock. You won this round! 🎉");
+        return alert ("Paper beats Rock. You won this round! 🎉");
     } else if (humanChoice === "scissors" && computerChoice === "rock"){
         computerScore = computerScore + 1;
-        return console.log ("Rock beats Scissors. Sorry the computer wins 😞.");
+        return alert ("Rock beats Scissors. Sorry the computer wins 😞.");
     } else if (humanChoice === "paper" && computerChoice === "scissors"){
         computerScore = computerScore + 1;
-        return console.log ("Scissors beats Paper. Sorry the computer wins 😞.");
+        return alert ("Scissors beats Paper. Sorry the computer wins 😞.");
     } else if (humanChoice === "rock" && computerChoice === "paper"){
         computerScore = computerScore + 1;
-        return console.log ("Paper beats Rock. Sorry the computer wins 😞.");
+        return alert("Paper beats Rock. Sorry the computer wins 😞.");
     }
 }
 //comparison function to determine winner and increases score counter
+
+const body = document.querySelector("body")
+
+const div = document.createElement("div")
+const rockBtn = document.createElement("button")
+const paperBtn= document.createElement("button")
+const scissorBtn = document.createElement("button")
+
+
+div.appendChild(rockBtn);
+rockBtn.textContent = "Rock"
+div.appendChild(paperBtn);
+paperBtn.textContent = "Paper"
+div.appendChild(scissorBtn);
+scissorBtn.textContent = "Scissor"
+body.appendChild(div);
+
+const button = Array.from(document.querySelectorAll("button"));
+
+button.forEach((button) => {
+    button.addEventListener("click", () => {
+        playRound("rock", "paper");
+    });
+});
+
 
 
 function playGame (){
@@ -77,3 +102,5 @@ function playGame (){
 }
 
 console.log(playGame());
+
+
