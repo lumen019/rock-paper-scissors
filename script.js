@@ -3,6 +3,14 @@ let computerScore = 0;
 let roundsPlayed = 0;
 const maxRounds = 5;
 
+let humanScoreCounter = document.querySelector("#humanScore");
+let computerScoreCounter = document.querySelector("#computerScore");
+let gameRound = document.querySelector("#gameRound")
+
+humanScoreCounter.textContent = `Your Score: 0`;
+computerScoreCounter.textContent = `Computer Score: 0`;   
+gameRound.textContent = `Game Round: 0`;
+
 function getComputerChoice (){
     let number = Math.floor(Math.random() * 3); 
     let result = "";
@@ -29,16 +37,14 @@ button.forEach((btn) => {
 
 
 function playRound (humanChoice, computerChoice) {    
-    if (roundsPlayed >= maxRounds) return;
+    if (humanScore >= 5 || computerScore >= 5) return;
     
     roundsPlayed++;
-    console.log(`Round ${roundsPlayed} | ${humanChoice}`);
-    console.log(`Round ${roundsPlayed} | ${computerChoice}`);
-
 
     let msgContainer = document.querySelector("#msgContainer")
     let roundMsg = document.createElement ("p")
     msgContainer.append(roundMsg)
+    roundMsg.style.fontSize = "13px";
 
 
     if (humanChoice === computerChoice){
@@ -55,28 +61,33 @@ function playRound (humanChoice, computerChoice) {
         roundMsg.textContent = `[Round ${roundsPlayed}]  You: ${humanChoice} | Computer: ${computerChoice} | You lose!`
     }   
 
-    let score = document.querySelector("#score")
-    score.innerText = `Current score: You ${humanScore} points, Computer ${computerScore} points.`
+    
+    humanScoreCounter.textContent = `Your Score: ${humanScore}`;
+    computerScoreCounter.textContent = `Computer Score: ${computerScore}`;   
+    gameRound.textContent = `Game Round: ${roundsPlayed}`;
 
-
+    let winner = document.querySelector("#winner")
+    
     let resetGame = () => {
         humanScore = 0;
         computerScore = 0;
         roundsPlayed = 0;
 
         msgContainer.textContent = "";
-        score.textContent = `Current score: You 0 points, Computer 0 points.`;
-        winnerContainer.textContent = "";
+        winner.textContent = "";
+        humanScoreCounter.textContent = `Your Score: 0`;
+        computerScoreCounter.textContent = `Computer Score: 0`;
+        gameRound.textContent = `Game Round: 0`;
 
         button.forEach(btn => btn.disabled = false);
     }
 
 
     let disableButtons = () => {
-        button.forEach(btn => btn.disabled = true);
+        button.forEach(btn => btn.disabled = true); 
     }  
 
-    if (roundsPlayed >= maxRounds){
+    if (humanScore >= 5 || computerScore >= 5){
         endGameScreen();
         
         setTimeout(() => {
@@ -87,20 +98,18 @@ function playRound (humanChoice, computerChoice) {
             } else {
                 disableButtons();
             }
-        }, 1000);       
+        }, 2000);       
     }
 }
 
 function endGameScreen () {
-    let winnerContainer = document.querySelector("#winnerContainer")
-    let winner = document.createElement("h3")
-    winnerContainer.append(winner)
+    let winner = document.querySelector("#winner")
 
     if (humanScore > computerScore){ 
             winner.textContent = "WINNER WINNER CHICKEN DINNER 🐤🐓🐔 You Win!!!!!!"
         } else if (humanScore < computerScore) {
-            winner.textContent = "The Computer Wins! Better luck next time." 
+            winner.textContent = "The Computer 🖥️ Wins! Better luck next time." 
         } else {
-            winner.textContent = "Its a tie! No one wins this time."
+            winner.textContent = "Its a tie! ⭐🟰⭐ No one wins this time."
         }
 }   

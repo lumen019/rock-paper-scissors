@@ -5,20 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="buttons">
         <button id="rockBtn">Rock</button>
         <button id="paperBtn">Paper</button>
         <button id="scissorBtn">Scissor</button>
-        <div>Pick Rock, Paper Scissors to Play against 5 rounds against the Computer!</div>
     </div>
-    <div id="msgContainer">
-        
+    <div class="instructions">Pick Rock, Paper or Scissors to play against the computer. First to five points win!</div>
+    <div id="scoreCounter">
+        <div id="humanScore"></div>
+        <div id="computerScore"></div>
+        <div id="gameRound"></div>
     </div>
-    <div id="score"></div>
-    <div id="winnerContainer">
-
-    </div>
+    
+    <div id="msgContainer"></div>
+    <h2 id="winner"></h2>
 </body>
 </html>
