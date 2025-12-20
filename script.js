@@ -91,7 +91,7 @@ function playRound (humanChoice, computerChoice) {
         endGameScreen();
         
         setTimeout(() => {
-            let playAgain = confirm("The game is over. Play again?")
+            let playAgain = confirm("The game has ended. Want to try again?")
 
             if (playAgain) {
                 resetGame();
@@ -106,10 +106,10 @@ function endGameScreen () {
     let winner = document.querySelector("#winner")
 
     if (humanScore > computerScore){ 
-            winner.textContent = "WINNER WINNER CHICKEN DINNER 🐤🐓🐔 You Win!!!!!!"
+            winner.textContent = "Winner winner chicken dinner! 🐤🐓🐔 You win!"
         } else if (humanScore < computerScore) {
-            winner.textContent = "The Computer 🖥️ Wins! Better luck next time." 
+            winner.textContent = "The computer 🤖 wins this round. Try again!" 
         } else {
-            winner.textContent = "Its a tie! ⭐🟰⭐ No one wins this time."
+            winner.textContent = "Its a tie! ⭐ No one wins this time."
         }
 }   
